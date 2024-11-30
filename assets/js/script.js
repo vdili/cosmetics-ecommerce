@@ -95,3 +95,151 @@ const scrollReveal = function () {
 scrollReveal();
 
 addEventOnElem(window, "scroll", scrollReveal);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.querySelector(".contact-form");
+
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent default form submission
+    
+    let isValid = true;
+
+    // Validate Name
+    const nameInput = document.getElementById("name");
+    if (nameInput.value.trim() === "") {
+      isValid = false;
+      alert("Name is required.");
+      nameInput.focus();
+      return;
+    }
+
+    // Validate Email
+    const emailInput = document.getElementById("email");
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(emailInput.value.trim())) {
+      isValid = false;
+      alert("Please enter a valid email address.");
+      emailInput.focus();
+      return;
+    }
+
+    // Validate Message
+    const messageInput = document.getElementById("message");
+    if (messageInput.value.trim() === "") {
+      isValid = false;
+      alert("Message is required.");
+      messageInput.focus();
+      return;
+    }
+
+    // If the form is valid, show a success message and redirect
+    if (isValid) {
+      alert("Contact form submitted successfully!");
+      window.location.href = "index.html"; // Redirect to index.html
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Handle Login Form Submission
+  const loginForm = document.querySelector(".login-form");
+
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    let isValid = true;
+
+    // Validate Email
+    const emailInput = document.getElementById("email");
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(emailInput.value.trim())) {
+      isValid = false;
+      alert("Please enter a valid email address.");
+      emailInput.focus();
+      return;
+    }
+
+    // Validate Password
+    const passwordInput = document.getElementById("password");
+    if (passwordInput.value.trim() === "") {
+      isValid = false;
+      alert("Password is required.");
+      passwordInput.focus();
+      return;
+    }
+
+    // If the form is valid, show a success message and redirect
+    if (isValid) {
+      alert("Login successful!");
+      window.location.href = "index.html"; // Redirect to index.html
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Handle Register Form Submission
+  const registerForm = document.querySelector(".register-form");
+
+  registerForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    let isValid = true;
+
+    // Validate Name
+    const nameInput = document.getElementById("name");
+    if (nameInput.value.trim() === "") {
+      isValid = false;
+      alert("Name is required.");
+      nameInput.focus();
+      return;
+    }
+
+    // Validate Surname
+    const surnameInput = document.getElementById("surname");
+    if (surnameInput.value.trim() === "") {
+      isValid = false;
+      alert("Surname is required.");
+      surnameInput.focus();
+      return;
+    }
+
+    // Validate Email
+    const emailInput = document.getElementById("email");
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(emailInput.value.trim())) {
+      isValid = false;
+      alert("Please enter a valid email address.");
+      emailInput.focus();
+      return;
+    }
+
+    // Validate Password
+    const passwordInput = document.querySelectorAll("#password")[0];
+    const confirmPasswordInput = document.querySelectorAll("#password")[1];
+
+    if (passwordInput.value.trim() === "") {
+      isValid = false;
+      alert("Password is required.");
+      passwordInput.focus();
+      return;
+    }
+
+    // Validate Password Match
+    if (passwordInput.value.trim() !== confirmPasswordInput.value.trim()) {
+      isValid = false;
+      alert("Passwords do not match. Please re-enter your passwords.");
+      confirmPasswordInput.focus();
+      return;
+    }
+
+    // If the form is valid, show a success message and redirect
+    if (isValid) {
+      alert("Registration successful!");
+      window.location.href = "index.html"; // Redirect to index.html
+    }
+  });
+});
+
+
+
