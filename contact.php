@@ -94,7 +94,7 @@ if(isset($_POST['form_contact']))
         $visitor_phone = strip_tags($_POST['visitor_phone']);
         $visitor_message = strip_tags($_POST['visitor_message']);
 
-        /
+        
         $to_admin = $receive_email;
         $subject = $receive_email_subject;
         $message = '
