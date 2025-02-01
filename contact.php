@@ -33,8 +33,12 @@ foreach ($result as $row) {
                 <div class="row cform">
                     <div class="col-md-8">
                         <div class="well well-sm">
-                            
+                           
                             <?php
+
+error_reporting(0);
+ini_set('display_errors', 0);
+
 
 if(isset($_POST['form_contact']))
 {
@@ -42,8 +46,8 @@ if(isset($_POST['form_contact']))
     $success_message = '';
     $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
     $statement->execute();
-    $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
-    foreach ($result as $row) 
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);                          
+    foreach ($result as $row)
     {
         $receive_email = $row['receive_email'];
         $receive_email_subject = $row['receive_email_subject'];
@@ -88,13 +92,13 @@ if(isset($_POST['form_contact']))
 
     if($valid == 1)
     {
-        
+       
         $visitor_name = strip_tags($_POST['visitor_name']);
         $visitor_email = strip_tags($_POST['visitor_email']);
         $visitor_phone = strip_tags($_POST['visitor_phone']);
         $visitor_message = strip_tags($_POST['visitor_message']);
 
-        
+       
         $to_admin = $receive_email;
         $subject = $receive_email_subject;
         $message = '
@@ -121,18 +125,18 @@ if(isset($_POST['form_contact']))
 ';
         $headers = 'From: ' . $visitor_email . "\r\n" .
                    'Reply-To: ' . $visitor_email . "\r\n" .
-                   'X-Mailer: PHP/' . phpversion() . "\r\n" . 
-                   "MIME-Version: 1.0\r\n" . 
+                   'X-Mailer: PHP/' . phpversion() . "\r\n" .
+                   "MIME-Version: 1.0\r\n" .
                    "Content-Type: text/html; charset=ISO-8859-1\r\n";
-              
-        mail($to_admin, $subject, $message, $headers); 
-        
+             
+        mail($to_admin, $subject, $message, $headers);
+       
         $success_message = $receive_email_thank_you_message;
-
+       
     }
 }
 ?>
-                
+               
                 <?php
                 if($error_message != '') {
                     echo "<script>alert('".$error_message."')</script>";
@@ -174,7 +178,7 @@ if(isset($_POST['form_contact']))
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+                        <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
                         <address>
                             <?php echo nl2br($contact_address); ?>
                         </address>
@@ -191,10 +195,11 @@ if(isset($_POST['form_contact']))
 
                 <h3>Find Us On Map</h3>
                 <?php echo $contact_map_iframe; ?>
-                
+               
             </div>
         </div>
     </div>
 </div>
 
 <?php require_once('footer.php'); ?>
+
