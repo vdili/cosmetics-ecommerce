@@ -44,3 +44,6 @@ Ky projekt është një webfaqe e-commerce për kozmetikë, me emrin **GLOWING**
   - **MySQL**: Përdorimi i një databaze për të ruajtur informacionin e përdoruesve, produktet, dhe porositë.
 
 Ky projekt është krijuar për të ofruar një platformë të besueshme dhe të lehtë për t'u përdorur për blerësit e kozmetikës, duke ofruar një ndërfaqe të thjeshtë dhe të fuqishme për menaxhimin e produktit dhe të dhënave të përdoruesve. Përmes përdorimit të teknologjive më të fundit dhe një strukture të mirë organizuar, **GLOWING** ofron një përvojë të shkëlqyer për klientët dhe administratorët.
+
+![image](https://github.com/user-attachments/assets/94b68830-29da-466e-9808-0d57623cff5c)
+
