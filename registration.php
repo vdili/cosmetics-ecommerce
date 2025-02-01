@@ -10,6 +10,10 @@ foreach ($result as $row) {
 ?>
 
 <?php
+
+error_reporting(0);
+ini_set('display_errors', 0);
+
 if (isset($_POST['form1'])) {
 
     $valid = 1;
@@ -85,7 +89,7 @@ if (isset($_POST['form1'])) {
         $cust_datetime = date('Y-m-d h:i:s');
         $cust_timestamp = time();
 
-        
+       
         $statement = $pdo->prepare("INSERT INTO tbl_customer (
                                         cust_name,
                                         cust_cname,
@@ -151,9 +155,9 @@ if (isset($_POST['form1'])) {
                                         0
                                     ));
 
-        
+       
         $to = $_POST['cust_email'];
-        
+       
         $subject = LANG_VALUE_150;
         $verify_link = BASE_URL.'verify.php?email='.$to.'&token='.$token;
         $message = '
@@ -163,10 +167,10 @@ if (isset($_POST['form1'])) {
 
         $headers = "From: noreply@" . BASE_URL . "\r\n" .
                    "Reply-To: noreply@" . BASE_URL . "\r\n" .
-                   "X-Mailer: PHP/" . phpversion() . "\r\n" . 
-                   "MIME-Version: 1.0\r\n" . 
+                   "X-Mailer: PHP/" . phpversion() . "\r\n" .
+                   "MIME-Version: 1.0\r\n" .
                    "Content-Type: text/html; charset=ISO-8859-1\r\n";
-        
+       
         // Sending Email
         mail($to, $subject, $message, $headers);
 
@@ -196,14 +200,14 @@ if (isset($_POST['form1'])) {
             <div class="col-md-12">
                 <div class="user-content">
 
-                    
+                   
 
                     <form action="" method="post">
                         <?php $csrf->echoInputField(); ?>
                         <div class="row">
                             <div class="col-md-2"></div>
                             <div class="col-md-8">
-                                
+                               
                                 <?php
                                 if($error_message != '') {
                                     echo "<div class='error' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>".$error_message."</div>";
@@ -249,7 +253,7 @@ if (isset($_POST['form1'])) {
                                     ?>    
                                     </select>                                    
                                 </div>
-                                
+                               
                                 <div class="col-md-6 form-group">
                                     <label for=""><?php echo LANG_VALUE_107; ?> *</label>
                                     <input type="text" class="form-control" name="cust_city" value="<?php if(isset($_POST['cust_city'])){echo $_POST['cust_city'];} ?>">
